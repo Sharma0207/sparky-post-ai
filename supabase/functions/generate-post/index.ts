@@ -78,10 +78,18 @@ async function generateVersion(prompt: string, versionNumber: number, apiKey: st
     throw new Error("No content generated");
   }
 
-  // Parse the JSON response
+  // Parse the JSON response - handle markdown code blocks
   let parsedContent;
   try {
-    parsedContent = JSON.parse(content);
+    // Remove markdown code blocks if present
+    let cleanContent = content.trim();
+    if (cleanContent.startsWith("```json")) {
+      cleanContent = cleanContent.replace(/^```json\n/, "").replace(/\n```$/, "");
+    } else if (cleanContent.startsWith("```")) {
+      cleanContent = cleanContent.replace(/^```\n/, "").replace(/\n```$/, "");
+    }
+    
+    parsedContent = JSON.parse(cleanContent);
   } catch (e) {
     console.error("Failed to parse JSON:", content);
     // Fallback in case AI doesn't return valid JSON
