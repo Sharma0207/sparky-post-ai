@@ -1,7 +1,12 @@
-import { Dashboard } from "@/components/Dashboard";
+import HeroSection from "@/components/HeroSection";
 
 const Index = () => {
-  return <Dashboard />;
+  return (
+    <div className="min-h-screen">
+      <HeroSection />
+      {/* Additional sections will be added here */}
+    </div>
+  );
 };
 
 export default Index;

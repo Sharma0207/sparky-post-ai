@@ -38,10 +38,18 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
+    /* Dazzling World Academy Brand Colors */
+    --deep-teal: 180 100% 15%; /* #004D40 */
+    --soft-gold: 43 100% 37%; /* #B8860B */
+    --off-white: 0 0% 96%; /* #F5F5F5 */
+
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(250 84% 54%));
+    --gradient-hero-overlay: linear-gradient(135deg, rgba(0, 77, 64, 0.2), rgba(0, 77, 64, 0.4));
     --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
     --shadow-hover: 0 8px 30px rgba(59, 130, 246, 0.3);
+    --shadow-gold: 0 8px 30px rgba(184, 134, 11, 0.3);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-elegant: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 }
 
@@ -52,5 +60,78 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer components {
+  /* Hero Section Typography */
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .hero-subheadline {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+  }
+
+  /* Hero Section Animations */
+  .hero-fade-in {
+    animation: heroFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .hero-fade-in-delayed {
+    animation: heroFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .hero-fade-in-more-delayed {
+    animation: heroFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .hero-cta-pulse {
+    animation: heroCtaPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes heroFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes heroCtaPulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(184, 134, 11, 0);
+    }
+  }
+
+  /* Additional Hero Section Enhancements */
+  .hero-gradient-text {
+    background: linear-gradient(135deg, hsl(var(--off-white)), hsl(var(--soft-gold)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-shadow-text {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-backdrop-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }
