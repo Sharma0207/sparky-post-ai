@@ -57,6 +57,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Dazzling World Academy Brand Colors
+        "deep-teal": "hsl(var(--deep-teal))",
+        "soft-gold": "hsl(var(--soft-gold))",
+        "off-white": "hsl(var(--off-white))",
       },
       borderRadius: {
         lg: "var(--radius)",
